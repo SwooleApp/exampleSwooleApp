@@ -1,0 +1,16 @@
+{
+    "autoload": {
+        "psr-4": {
+            "App": "src/"
+        }
+    },
+    "require": {
+        "sidalex/swoole-app": "^0.2.2"
+    },
+    "config": {
+        "allow-plugins": {
+            "yurunsoft/composer-include-files": true,
+            "yurunsoft/guzzle-swoole": true
+        }
+    }
+}
