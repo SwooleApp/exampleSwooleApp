@@ -1,0 +1,8 @@
+{
+  "controllers": [
+    "App\\Controllers"
+  ],
+  "CyclicJobs": [
+    "App\\CyclicJobs\\CyclicJob"
+  ]
+}
