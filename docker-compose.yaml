@@ -1,0 +1,10 @@
+version: '3'
+
+services:
+  app:
+    image: phpswoole/swoole:php8.3
+    #    restart: always
+    volumes:
+      - ./:/var/www
+    ports:
+      - '82:9501'
