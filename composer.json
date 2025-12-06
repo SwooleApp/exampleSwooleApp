@@ -5,7 +5,7 @@
         }
     },
     "require": {
-        "sidalex/swoole-app": "^0.2.2"
+        "sidalex/swoole-app": "^0.2.6"
     },
     "config": {
         "allow-plugins": {
