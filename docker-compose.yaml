@@ -1,14 +1,26 @@
-version: '3'
 
 services:
   app:
-    image: phpswoole/swoole:php8.3
-    #    restart: always
-    volumes:
-      - ./:/var/www
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: swoole-app
     ports:
       - '82:9501'
+    environment:
+      - COMPOSER_HOME=/tmp/composer
+      - APP_ENV=production
+    depends_on:
+      - redis
+    networks:
+      - swoole-network
   redis:
-    restart: always
-    container_name: redis
-    image: redis
+    image: redis:7-alpine
+    container_name: swoole-redis
+    ports:
+      - '6379:6379'
+    networks:
+      - swoole-network
+networks:
+  swoole-network:
+    driver: bridge
