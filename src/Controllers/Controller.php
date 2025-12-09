@@ -2,10 +2,13 @@
 
 namespace App\Controllers;
 
+use App\Middleware\LoggingMiddleware;
 use Sidalex\SwooleApp\Classes\Controllers\AbstractController;
 use Sidalex\SwooleApp\Classes\Controllers\Route;
+use Sidalex\SwooleApp\Classes\Middleware\Middleware;
 
 #[Route(uri: "/", method: 'GET')]
+#[Middleware(LoggingMiddleware::class,[])]
 class Controller extends AbstractController
 {
 

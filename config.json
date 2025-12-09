@@ -4,5 +4,23 @@
   ],
   "CyclicJobs": [
     "App\\CyclicJobs\\CyclicJob"
-  ]
+  ],
+  "StateContainerInitiation": [
+    "App\\StateContainerInitializers\\RedisConnectionPoolInitializer"
+  ],
+  "POSTGRE_SQL": {
+    "host": "localhost",
+    "port": "localhost",
+    "user": "localhost",
+    "password": "localhost",
+    "db": "localhost"
+  },
+  "REDIS": {
+    "HOST": "redis",
+    "PORT": "6379",
+    "PASSWORD": "",
+    "DB_NUMBER": 0,
+    "TIMEOUT": 1,
+    "POOL_SIZE": "1"
+  }
 }
