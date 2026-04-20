@@ -10,10 +10,9 @@ use Sidalex\SwooleApp\Classes\Middleware\Middleware;
 use Swoole\Database\RedisPool;
 
 #[Route(uri: "/redis/get/{key}", method: 'GET')]
-#[Middleware(LoggingMiddleware::class,[])]
+#[Middleware(LoggingMiddleware::class, [])]
 class RedisGetter extends AbstractController
 {
-
     public function execute(): \Swoole\Http\Response
     {
         /**
@@ -24,7 +23,7 @@ class RedisGetter extends AbstractController
         $body = $this->request->getContent();
         try {
             $redis = $redisPool->get();
-            $data =$redis->get($key);
+            $data = $redis->get($key);
             $this->response->header('Content-Type', 'application/json');
             $this->response->status(200);
             $this->response->end($data);
@@ -32,7 +31,7 @@ class RedisGetter extends AbstractController
             $this->response->status(500);
             $this->response->header('Content-Type', 'application/json');
         } finally {
-        $redisPool->put($redis);
+            $redisPool->put($redis);
         }
 
         return $this->response;

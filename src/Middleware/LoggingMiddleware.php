@@ -5,7 +5,6 @@ namespace App\Middleware;
 use Sidalex\SwooleApp\Application;
 use Sidalex\SwooleApp\Classes\Middleware\AbstractMiddleware;
 
-
 class LoggingMiddleware extends AbstractMiddleware
 {
     public function process(
@@ -35,8 +34,11 @@ class LoggingMiddleware extends AbstractMiddleware
         echo "Request: {$request->getMethod()} {$request->server['request_uri']}\n";
     }
 
-    private function logResponse(\Swoole\Http\Request $request, \Swoole\Http\Response $response, float $executionTime): void
-    {
+    private function logResponse(
+        \Swoole\Http\Request $request,
+        \Swoole\Http\Response $response,
+        float $executionTime
+    ): void {
         echo "Response: {$request->getMethod()} {$request->server['request_uri']} - " .
             sprintf("%.4f", $executionTime) . "s\n";
     }

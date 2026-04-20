@@ -10,10 +10,9 @@ use Sidalex\SwooleApp\Classes\Middleware\Middleware;
 use Swoole\Database\RedisPool;
 
 #[Route(uri: "/redis/set/{key}", method: 'POST')]
-#[Middleware(LoggingMiddleware::class,[])]
+#[Middleware(LoggingMiddleware::class, [])]
 class RedisSetter extends AbstractController
 {
-
     public function execute(): \Swoole\Http\Response
     {
         /**
@@ -32,7 +31,7 @@ class RedisSetter extends AbstractController
             $this->response->status(500);
             $this->response->header('Content-Type', 'application/json');
         } finally {
-        $redisPool->put($redis);
+            $redisPool->put($redis);
         }
 
         return $this->response;
