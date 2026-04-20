@@ -8,10 +8,9 @@ use Sidalex\SwooleApp\Classes\Controllers\Route;
 use Sidalex\SwooleApp\Classes\Middleware\Middleware;
 
 #[Route(uri: "/", method: 'GET')]
-#[Middleware(LoggingMiddleware::class,[])]
+#[Middleware(LoggingMiddleware::class, [])]
 class Controller extends AbstractController
 {
-
     public function execute(): \Swoole\Http\Response
     {
         $this->response->end('Hello World');

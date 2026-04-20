@@ -11,14 +11,13 @@ use Sidalex\SwooleApp\Classes\Tasks\Data\BasicTaskData;
 use Sidalex\SwooleApp\Classes\Tasks\TaskResulted;
 
 #[Route(uri: "/test-task", method: 'POST')]
-#[Middleware(LoggingMiddleware::class,[])]
+#[Middleware(LoggingMiddleware::class, [])]
 class TestTaskController extends AbstractController
 {
-
     public function execute(): \Swoole\Http\Response
     {
         $body = $this->request->getContent();
-        if(!self::isJson($body)) {
+        if (!self::isJson($body)) {
             $this->response->status(400);
             $this->response->end("Bad request json is not valid");
             return $this->response;
@@ -27,17 +26,17 @@ class TestTaskController extends AbstractController
         /**
          * @var TaskResulted $tesult
          */
-        $tesult = $this->server->taskwait($task,10);
-        if($tesult->getResult()){
+        $tesult = $this->server->taskwait($task, 10);
+        if ($tesult->getResult()) {
             $this->response->end("Task executed sucsess");
-        }
-        else{
+        } else {
             $this->response->status(500);
             $this->response->end("Task executed failed");
         }
         return $this->response;
     }
-    static function isJson(string $string): bool {
+    public static function isJson(string $string): bool
+    {
         // Проверяем, что строка не пустая
         if (empty(trim($string))) {
             return false;

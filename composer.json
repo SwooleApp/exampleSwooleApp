@@ -4,8 +4,13 @@
       "App\\": "src/"
     }
   },
+  "autoload-dev": {
+    "psr-4": {
+      "Tests\\": "tests/"
+    }
+  },
   "require": {
-    "sidalex/swoole-app": "^0.2.6",
+    "sidalex/swoole-app": "*",
     "ext-redis": "*"
   },
   "config": {
@@ -13,5 +18,11 @@
       "yurunsoft/composer-include-files": true,
       "yurunsoft/guzzle-swoole": true
     }
+  },
+  "require-dev": {
+    "codeception/codeception": "^5.3",
+    "codeception/module-asserts": "^3.3",
+    "codeception/module-phpbrowser": "^4.0",
+    "codeception/module-rest": "^3.4"
   }
 }

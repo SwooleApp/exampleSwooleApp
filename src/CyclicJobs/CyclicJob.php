@@ -11,6 +11,6 @@ class CyclicJob extends AbstractCyclicJob
     public function runJob(): void
     {
         $date = date('Y-m-d H:i:s');
-        file_put_contents('Job.log', "Cyclic Job date now {$date} \n",FILE_APPEND);
+        file_put_contents('Job.log', "Cyclic Job date now {$date} \n", FILE_APPEND);
     }
 }

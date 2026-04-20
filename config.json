@@ -8,19 +8,42 @@
   "StateContainerInitiation": [
     "App\\StateContainerInitializers\\RedisConnectionPoolInitializer"
   ],
-  "POSTGRE_SQL": {
-    "host": "localhost",
-    "port": "localhost",
-    "user": "localhost",
-    "password": "localhost",
-    "db": "localhost"
+  "DISPATCHER": "App\\Dispatcher\\RoundRobinDispatcher",
+  "events": {
+    "workerStart": {
+      "after": [
+        ["App\\Events\\WorkerStartLogger", "handle"]
+      ]
+    },
+    "workerStop": {
+      "before": [
+        ["App\\Events\\WorkerStopLogger", "handle"]
+      ]
+    },
+    "request": {
+      "before": [
+        ["App\\Events\\RequestLogger", "handle"]
+      ]
+    }
+  },
+  "server": {
+    "host": "0.0.0.0",
+    "port": 9501,
+    "mode": "PROCESS"
+  },
+  "SWOOLE": {
+    "worker_num": 2,
+    "task_worker_num": 4,
+    "daemonize": false,
+    "log_file": "/dev/stdout"
   },
   "REDIS": {
     "HOST": "redis",
-    "PORT": "6379",
+    "PORT": 6379,
     "PASSWORD": "",
     "DB_NUMBER": 0,
     "TIMEOUT": 1,
-    "POOL_SIZE": "1"
-  }
+    "POOL_SIZE": 1
+  },
+  "APP_DEBUG": true
 }

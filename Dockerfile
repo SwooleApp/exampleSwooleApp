@@ -1,14 +1,23 @@
 FROM phpswoole/swoole:php8.4
 
-
 WORKDIR /var/www
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-COPY . .
+COPY composer.json ./
 
+RUN composer config allow-plugins.yurunsoft/composer-include-files true && \
+    composer config allow-plugins.yurunsoft/guzzle-swoole true
 
-RUN composer install --no-dev --no-interaction --optimize-autoloader --ignore-platform-reqs
+COPY swooleApp_1/ swooleApp_1/
+COPY vendor/ vendor/
+COPY src/ src/
+COPY config.json ./
+COPY server.php ./
+COPY test_ok.php ./
 
+RUN composer dump-autoload --optimize
 
-RUN rm -f /usr/local/bin/composer
+EXPOSE 9501
+
+CMD ["php", "server.php"]
