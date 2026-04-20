@@ -5,7 +5,7 @@
     }
   },
   "require": {
-    "sidalex/swoole-app": "^0.2.6",
+    "sidalex/swoole-app": "*",
     "ext-redis": "*"
   },
   "config": {
