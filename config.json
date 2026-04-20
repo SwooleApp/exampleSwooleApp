@@ -45,5 +45,5 @@
     "TIMEOUT": 1,
     "POOL_SIZE": 1
   },
-  "APP_DEBUG": false
+  "APP_DEBUG": true
 }

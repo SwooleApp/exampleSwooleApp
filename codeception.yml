@@ -1,0 +1,9 @@
+namespace: Tests
+paths:
+  tests: tests
+  output: tests/_output
+  data: tests/_data
+  support: tests/_support
+settings:
+  memory_limit: 512M
+  colors: true
