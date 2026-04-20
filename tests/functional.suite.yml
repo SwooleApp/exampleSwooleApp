@@ -1,0 +1,6 @@
+actor: FunctionalTester
+modules:
+  enabled:
+    - REST:
+        depends: PhpBrowser
+        url: http://127.0.0.1:9501

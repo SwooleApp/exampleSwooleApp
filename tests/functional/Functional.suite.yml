@@ -1,0 +1,8 @@
+actor: FunctionalTester
+modules:
+  enabled:
+    - \Tests\Support\Helper\Functional
+    - PhpBrowser:
+        url: http://127.0.0.1:9501
+  step_decorators:
+    - \Codeception\Step\Asive
